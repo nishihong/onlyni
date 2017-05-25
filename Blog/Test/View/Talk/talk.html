@@ -1,0 +1,63 @@
+﻿<include file='Public/header'/>
+
+
+<link href="__PUBLIC__/home/bootstrap/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+<link href="__PUBLIC__/home/bootstrap/font-awesome.css?v=4.3.0" rel="stylesheet">
+<!-- <link href="__PUBLIC__/home/bootstrap/style.css?v=3.0.0" rel="stylesheet"> -->
+<link href="__PUBLIC__/home/bootstrap/style1.css" rel="stylesheet">
+
+<link href="__CSS__/mood.css" rel="stylesheet">
+<link href="__CSS__/jquery.fancybox.css" rel="stylesheet">
+
+<style type="text/css">
+  .fancybox img { width: 150px; float: left; margin: 0 20px 0 0; }
+</style>
+
+<div class="moodlist">
+  <h1 class="t_nav">
+    <span>删删写写，回回忆忆，虽无法行云流水，却也可碎言碎语。</span>
+    <a href="__ROOT__/index" class="n1">网站首页</a>
+    <a href="#" class="n2">碎言碎语</a>
+  </h1>
+      <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+        <foreach name="info" item="v">
+          <div class="vertical-timeline-block">
+              <div class="vertical-timeline-icon blue-bg">
+                  <i class="fa fa-file-text"></i>
+              </div>
+
+              <div class="vertical-timeline-content">
+                  <notempty name="v.talk_pic">
+                    <a rel="group" class="fancybox" href="{$v.talk_pic}" title="{$v.talk_content}">
+                      <img src="{$v.talk_pic}" alt="image" />
+                    </a>
+                  </notempty>
+                  <p> {$v.talk_content}</p>
+                  <span class="vertical-date">
+                    <br>
+                    {$v.talk_date}
+                  </span>
+              </div>
+          </div>
+        </foreach>
+      </div>
+  <div class="page">
+    {$pagelist}
+  </div>
+</div>
+
+<script src="__JS__/jquery-2.1.1.min.js"></script>
+<script src="__JS__/jquery.fancybox.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.fancybox').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
+    });
+</script>
+
+<!-- 全局js -->
+<script src="__PUBLIC__/home/bootstrap/bootstrap.min.js?v=3.4.0"></script>
+
+<include file='Public/footer'/>

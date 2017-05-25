@@ -1,0 +1,63 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/talk.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：碎言碎语 &gt; 碎言碎语 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+		<a href="__MODULE__/Talk/talkAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加新说说" aria-hidden="true"></span></a>
+	    <a onclick='confirmDeleteTalkAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	</div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">	
+		<table class="table table-hover">
+		<form id="form_do">
+			<tr>
+				<th><input class="check-all" type="checkbox"></th>
+				<th>编号</th>
+				<th width="35%">内容</th>
+				<th>图片</th>
+				<th>发表时间</th>
+				<th>置顶</th>
+				<th>操作</th>
+			</tr>
+			<foreach name="info" item="value">
+			<tr>
+				<td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.talk_id}"></td>
+				<td>{$value.talk_id}</td>
+				<td>{$value.talk_content}</td>
+				<td><img src="{$value.talk_pic}" width="80px" height="50px" alt="无"></td>
+				<td>{$value.talk_date}</td>
+				<td>
+					<if condition="$value.talk_top eq 0 ">
+						否
+					<else />
+						是
+					</if>
+				</td>
+				<td>
+					<a href='__MODULE__/Talk/talkUpdate/id/{$value.talk_id}' class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a>
+					<a onclick='confirmDeleteTalk({$value.talk_id})' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	       		</td>
+			</tr>
+			</foreach>
+			<tr>
+				<td colspan="20" class="button-center">
+					{$pagelist}
+				</td>
+			</tr>
+		</form>
+		</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

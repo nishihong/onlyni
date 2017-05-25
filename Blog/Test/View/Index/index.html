@@ -1,0 +1,134 @@
+﻿<include file='Public/header'/>
+
+<link href="__CSS__/index.css" rel="stylesheet">
+
+<div class="banner">
+  <section class="box">
+    <ul class="texts">
+      <p>世事如书，我偏爰你这一句，</p>
+      <p>愿做个逗号，呆在你脚边。</p>
+      <p>但你有自己的朗读者，而我只是个摆渡人。</p>
+    </ul>
+    <div class="avatar"><a href="#"><span>小倪</span></a> </div>
+  </section>
+</div>
+<div class="template">
+  <div class="box">
+    <h3>
+      <p><span>个人图册</span> Photo</p>
+    </h3>
+    <ul>
+      <foreach name="photoInfo" item="v">
+        <li><a href="__ROOT__/photo-{$v.photo_id}"><img src="{$v.photo_pic}"></a><span>{$v.photo_name}</span></li>
+      </foreach>
+    </ul>
+  </div>
+</div>
+<article>
+  <h2 class="title_tj">
+    <p>文章<span>推荐</span></p>
+  </h2>
+  <div class="bloglist left">
+    <foreach name="articleInfo" item="v">
+      <h3>{$v.article_title}</h3>
+      <figure><div><img src="{$v.article_pic}" alt="{$v.article_title}"></div></figure>
+      <ul>
+        <p>{$v.article_intro}</p>
+        <a title="{$v.article_title}" href="__ROOT__/articleDetails-{$v.article_id}" class="readmore">阅读全文>></a>
+      </ul>
+      <p class="dateview"><span>{$v.article_datetime}</span><span>来源：{$v.article_origin}</span><span>分类：[<a href="__ROOT__/articleQuery-{$v.article_programa}">{$v.programa_name}</a>]</span></p>
+    </foreach>
+  </div>
+  <aside class="right">
+    <div class="news">
+      <h3 class="ph">
+        <p><img src="__PUBLIC__/home/img/user.png" style="float:left;" />用户<span>登录</span></p>
+      </h3>
+      <ul class="rank">
+        <if condition="$qqname eq '' ">
+          <a href="{:U('Common/loginQq')}"><img height="20px" src="__PUBLIC__/home/img/qq.png" style="float:left;"/>QQ登录</a>
+        <else />
+          <li>QQ昵称:{$Think.session.qqname}</li>
+          <img src="{$Think.session.qqimg}" style="margin-left:20px" />
+          <li><a href="{:U('Common/outQq')}">退出登录</a></li>
+        </if>
+          
+        <!-- <li>用户名:<input type="text" name="user"></li>
+        <li>密&nbsp;码:<input type="text" name="password"></li>
+        <li><input type="submit" value="登录"> &nbsp;&nbsp;<a href="{:U('Base/loginQq')}" target="_blank"><img height="20px" src="__PUBLIC__/home/img/qq.png" /> QQ登录</a></li> -->   
+        <!-- {$Think.session.head} -->
+        <!-- <li><a href="{:U('Common/loginQq')}" target="_blank" ><img height="20px" src="__PUBLIC__/home/img/qq.png" style="float:left;"/>QQ登录</a></li>      -->
+      </ul>
+    </div>
+    <div class="news">
+      <h3 class="ph">
+        <p><img src="__PUBLIC__/home/img/download.png" style="float:left;" />程序<span>下载</span></p>
+      </h3>
+      <ul class="rank">
+        <li>站点版本：onlyni v1.0 20160318</li>
+        <li>开源版本：onlyni v1.0 20160318<a href="http://pan.baidu.com/s/1kUwRB8N" target="_blank">下载</a></li>
+        <li>提取密码：43nz</li>
+        <li>联 系 QQ：249183418</li>
+      </ul>
+    </div>
+
+    <div class="weather">
+      <iframe width="190" scrolling="no" height="80" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=2&num=1"></iframe>
+    </div>
+    <div class="news">
+    <h3>
+      <p>最新<span>文章</span></p>
+    </h3>
+    <ul class="rank">
+      <foreach name="newArticleInfo" item="v">
+        <li><a href="__ROOT__/articleDetails-{$v.article_id}" title="{$v.article_title}">{$v.article_title}</a></li>
+      </foreach>
+    </ul>
+    <h3 class="ph">
+      <p>点击<span>排行</span></p>
+    </h3>
+    <ul class="paih">
+      <foreach name="hitArticleInfo" item="v">
+        <li><a href="__ROOT__/articleDetails-{$v.article_id}" title="{$v.article_title}">{$v.article_title}</a></li>
+      </foreach>
+    </ul>
+    <h3 class="links">
+      <p>友情<span>链接</span></p>
+    </h3>
+    <ul class="website">
+      <!-- 分成单双 单前加<li>  双后加</li>  单独就全加<li></li> -->
+      <volist name="linkInfo" id="vo" mod="2">
+        <eq name="mod" value="0">
+          <if condition="$i eq count($linkInfo) ">
+            <!-- 全加 -->
+            <li><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></li>
+          <else/>
+            <!-- 前加 -->
+            <li><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>
+          </if>
+        <else/>
+          <!-- 后加 -->
+          <a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></li>
+        </eq>
+      </volist>
+      <li>如需申请友链，请联系！</li>
+    </ul> 
+    </div>  
+    <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+      <a class="bds_tsina"></a><a class="bds_qzone"></a>
+      <a class="bds_tqq"></a><a class="bds_renren"></a>
+      <span class="bds_more"></span>
+      <a class="shareCount"></a>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script> 
+    <script type="text/javascript" id="bdshell_js"></script> 
+    <script type="text/javascript">
+      document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+    </script> 
+    <!-- Baidu Button END -->   
+    <span class="weixin"></span>
+  </aside>
+</article>
+
+<include file='Public/footer'/>

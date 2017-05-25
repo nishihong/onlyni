@@ -1,0 +1,42 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/photo.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：相册 &gt; <a href="__MODULE__/Photo/photoList">相册列表</a> &gt; 添加相册  &gt;&gt;&gt;
+	</div>
+	
+	<div class="form"></div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<div class="table">
+		<form id="photoFormAdd">
+		<table class="table table-hover">
+			<tr>
+				<th>名称:</th>
+				<td><input class="form-control" id="photo_name" type="text" name="photo_name"></td>
+			</tr>
+			<tr>
+				<th>封面图:</th>
+				<td><font style="font-weight:bold;color:#CC5965">图片宽*高为{PHOTO_WIDTH}*{PHOTO_HEIGHT}！</font><input type="file" name="photo_pic" accept="image/gif,image/jpeg,image/png"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="添加" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<include file='Public/righter-foot' />

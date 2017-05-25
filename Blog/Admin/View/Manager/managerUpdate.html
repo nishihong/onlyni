@@ -1,0 +1,71 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+    <div class="right-top">
+       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; <a href="__MODULE__/Manager/managerList">管理员列表</a> &gt; 修改管理员信息 &gt;&gt;&gt;
+    </div><br/>
+
+    <!-- 修改管理员页面 -->
+    <div class="wrapper white-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+    <form id="managerFormUpdate">
+        <table class="table table-hover">
+            <input type='hidden' name='admin_id' value='{$info.admin_id}'/>
+            <tr>
+                <th>帐号:</th>
+                <td>
+                    <input type="text" readonly="readonly" name="admin_account" value="{$info.admin_account}" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>管理员名称:</th>
+                <td>
+                    <input type="text" name="admin_name" value="{$info['admin_name']}" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>角色:</th>
+                <td>
+                    <select name="role_id" class="form-control">
+                        <foreach name="roleInfo" item="value">
+                            <if condition="$info['role_id'] eq $value.role_id ">
+                            <option value="{$value.role_id}" selected="selected">{$value.role_name}</option>
+                                <else />
+                                <option value="{$value.role_id}">{$value.role_name}</option>
+                            </if>
+                        </foreach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>状态:</th>
+                <td>
+                    <select name="admin_status" class="form-control">
+                        <if condition="$info.admin_status eq 0 ">
+                            <option value="0" selected="selected">开启</option>
+                            <option value="1">禁用</option>
+                        <else />
+                            <option value="0">开启</option>
+                            <option value="1" selected="selected">禁用</option>
+                        </if>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button-center">
+                    <input type="submit" value="修改" class="btn btn-primary btn-lg">
+                </td>
+            </tr>
+        </table>
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<include file='Public/righter-foot' />

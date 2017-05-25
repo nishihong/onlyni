@@ -1,0 +1,93 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+    <div class="right-top">
+        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; 权限管理 &gt;&gt;&gt;
+    </div>
+    
+    <div class="form">
+        <a href="__MODULE__/Auth/authAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加权限" aria-hidden="true"></span></a>
+        <a onclick='confirmDeleteAuthAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="wrapper white-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+    <table class="table table-hover">
+    <form method="post" id="form_do" name="form_do">
+        <tr>
+            <th><input class="check-all" type="checkbox"></th>
+            <th>序号</th>
+            <th>权限名称</th>
+            <th>控制器</th>
+            <th>操作方法</th>
+            <th>图标</th>
+            <!-- <th width="10%">全路径</th> -->
+            <th>排序号</th>
+            <th>操作</th>
+        </tr>
+        
+        <foreach name="pinfo" item="v">
+            <tr>
+                <td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$v.auth_id}"></td>
+                <td>{$v.auth_id}</td>
+                <td>{$v.auth_name}</td>
+                <td>{$v.auth_c}</td>
+                <td>{$v.auth_a}</td>
+                <td><i class="glyphicon {$v.auth_ico}"></i></td>
+                <!-- <td>{$v.auth_path}</td> -->
+                <td>{$v.auth_rank}</td>
+                <td>
+                    <a href='__MODULE__/Auth/authUpdate/id/{$v.auth_id}' class="btn btn-info"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a> 
+                    <a onclick="confirmDeleteAuth({$v.auth_id})" class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+                </td>
+            </tr>
+            <foreach name="sinfo" item="vv">
+                <if condition="$vv.auth_pid eq $v.auth_id ">
+                    <tr>   
+                        <td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$vv.auth_id}"></td>
+                        <td>{$vv.auth_id}</td>
+                        <td> ├─ {$vv.auth_name}</td>
+                        <td>{$vv.auth_c}</td>
+                        <td>{$vv.auth_a}</td>
+                        <td><i class="glyphicon {$vv.auth_ico}"></i></td>
+                        <!-- <td>{$vv.auth_path}</td> -->
+                        <td>{$vv.auth_rank}</td>
+                        <td>
+                            <a href='__MODULE__/Auth/authUpdate/id/{$vv.auth_id}' class="btn btn-info"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a> 
+                            <a onclick="confirmDeleteAuth({$vv.auth_id})" class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                    <foreach name="tinfo" item="vvv">
+                        <if condition="$vvv.auth_pid eq $vv.auth_id ">
+                            <tr>
+                                <td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$vvv.auth_id}"></td>
+                                <td>{$vvv.auth_id}</td>
+                                <td> ├─  ├─ {$vvv.auth_name}</td>
+                                <td>{$vvv.auth_c}</td>
+                                <td>{$vvv.auth_a}</td>
+                                <td><i class="glyphicon {$vvv.auth_ico}"></i></td>
+                                <!-- <td>{$vvv.auth_path}</td> -->
+                                <td>{$vvv.auth_rank}</td>
+                                <td>
+                                    <a href='__MODULE__/Auth/authUpdate/id/{$vvv.auth_id}' class="btn btn-info"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a> 
+                                    <a onclick="confirmDeleteAuth({$vvv.auth_id})" class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+                                </td>
+                            </tr>
+                        </if>
+                    </foreach>
+                </if>
+            </foreach>
+        </foreach>
+    </form>
+    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<include file='Public/righter-foot' />

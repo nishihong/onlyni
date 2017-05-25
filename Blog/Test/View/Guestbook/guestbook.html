@@ -1,0 +1,174 @@
+<include file='Public/header'/>
+
+<link href="__CSS__/book.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="__CSS__/pintuer.css"/>         
+<link rel="stylesheet" type="text/css" href="__CSS__/completer.css"/>
+
+<link rel="stylesheet" type="text/css" href="__CSS__/sweetalert.css"/>
+
+<style type="text/css">
+	footer p { font: 12px "宋体", Arial, Helvetica, sans-serif; color: #756F71 }
+</style>
+
+<script src="__JS__/jquery.validate.min.js"></script>
+<script src="__JS__/messages_zh.min.js"></script>
+<script src="__JS__/validate.js"></script>
+<script src="__JS__/sweetalert.min.js"></script>
+<script src="__JS__/jquery.form.min.js"></script>
+
+<script src="__JS__/completer.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#guestbook_email").completer({
+            separator: "@",
+            source: ["qq.com", "163.com", "126.com", "139.com", "gmail.com", "hotmail.com", "icloud.com"]
+        });       
+
+    });
+</script>
+
+<article class="aboutcon">
+    <h1 class="t_nav">
+    <span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span>
+    <a href="__ROOT__/index" class="n1">网站首页</a>
+    <a href="#" class="n2">留言版</a></h1>
+<div class="book left">	
+	<volist name="guestbookInfo" id="vo">
+		<div class="clearfix articlebox">
+			<!-- <div class="liuyan_a">
+			</div> -->
+			<div class="said_img">
+				<img src="{$vo.guestbook_pic}" class="radius-circle" width="60px" height="60px" />
+				<div class="liuyan_t">
+					<span class="icon-user"></span>&nbsp;&nbsp;<a href="{$vo.guestbook_url}" target="_blank">{$vo.guestbook_name}</a>&nbsp;&nbsp;</span>
+					<span class="icon-paper-plane"></span>&nbsp;{$vo.guestbook_datetime|tranTime}&nbsp;&nbsp;</span>
+					<span class="tag bg-dot">{$vo.guestbook_from}</span>&nbsp;&nbsp;<span class="icon-map-marker"></span>&nbsp;{$vo.guestbook_ip}
+				</div>
+				<div class="liuyan_c">
+					{$vo.guestbook_content}
+				</div>
+			</div>
+
+			<!--回复-->
+			<if condition="$vo.reply_content neq ''">
+			<div class="f_liuyan">
+				<hr />
+				<!-- <div class="liuyan_a">
+				</div> -->
+				<div class="said_img">
+					<img src="__ROOT__/Upload/avatar/avatar_60.jpg" class="radius-circle" width="60px" height="60px" />
+					<div class="liuyan_t">
+						<span class="icon-user"></span>&nbsp;&nbsp;管理员&nbsp;&nbsp;</span>
+						<span class="icon-paper-plane"></span>&nbsp;&nbsp;{$vo.reply_datetime|tranTime}&nbsp;&nbsp;
+						<span>回复 @<a>{$vo.guestbook_name}</a> 中说到：</span>
+					</div>
+					<div class="liuyan_c">
+						{$vo.reply_content}
+					</div>
+				</div>
+			</div>
+			</if>
+		</div>
+		<br />
+	</volist>
+
+	<div class="page">
+    	{$pagelist}
+  	</div>
+	<hr />
+	
+	<div class="panel border-sub">
+		<div class="panel-head border-sub bg-sub">
+			<h3>留  言</h3>
+		</div>
+		<div class="panel-body">
+			<div class="panel-body">
+				<form id="guestbookFormAdd">	
+					<div class="form-group">
+						<div class="field">
+							<div class="input-group">
+								<span class="addon">昵称</span>
+								<if condition="$qqname eq '' ">
+									<input type="text" class="input" name="guestbook_name"/>
+								<else/>
+									<input type="text" class="input" name="guestbook_name" value="{$qqname}" readonly="readonly"/>
+								</if>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="field">
+							<div class="input-group">
+								<span class="addon">邮箱</span>
+								<input type="text" class="input" id="guestbook_email" name="guestbook_email"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="field">
+							<div class="input-group">
+								<span class="addon">主页</span>
+								<input type="text" class="input" id="guestbook_url" name="guestbook_url" value="http://"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="field">
+							<textarea class="input" rows="4" name="guestbook_content" cols="50"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="field">
+							<div class="input-group">
+								<span class="addon">验证码</span>
+								<input type="text" style="width: 300px;" class="input" name="codecheck"/>
+								<img style="margin-top: -32px;margin-left: 70%;display: block;border: 1px solid #C7C7C7;" class="img" src="{:U('Home/Guestbook/verify')}" onClick="this.src = this.src + '?' + Math.random();" title="看不清楚?点击刷新验证码?">
+							</div>
+						</div>
+					</div>
+					<div class="form-button">
+						<input type="submit" value="发  表" class="button bg-blue button-big button-block">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<aside class="right">  
+  <div class="about_c">
+    <p>网名：<span>{$info.about_net_name}</span></p>
+    <p>姓名：{$info.about_name}</p>
+    <p>生日：{$info.about_birthday}</p>
+    <p>籍贯：
+        <notempty name="info.about_native_place_province">
+            {$info.about_native_place_province}
+            <notempty name="info.about_native_place_city">
+                -{$info.about_native_place_city}
+                <notempty name="info.about_native_place_dist">
+                    -{$info.about_native_place_dist}
+                </notempty>
+            </notempty>
+        </notempty>
+    </p>
+    <p>现居：
+        <notempty name="info.about_present_address_province">
+            {$info.about_present_address_province}
+            <notempty name="info.about_present_address_city">
+                -{$info.about_present_address_city}
+                <notempty name="info.about_present_address_dist">
+                    -{$info.about_present_address_dist}
+                </notempty>
+            </notempty>
+        </notempty>
+    </p>
+    <p>职业：{$info.about_job}</p>
+    <p>喜欢的书：{$info.about_favorite_book}</p>
+    <p>喜欢的音乐：{$info.about_favorite_music}</p>
+    <p>喜欢的明星：{$info.about_favorite_star}</p>
+  </div>     
+</aside>
+</article>
+
+<include file='Public/footer'/>

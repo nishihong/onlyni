@@ -1,0 +1,74 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; 管理员列表 &gt;&gt;&gt;
+	</div>
+	
+	<div class="form">
+		<form action="__MODULE__/Manager/managerQuery" method="get" class="form-inline">
+		    <a href="__MODULE__/Manager/managerAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加管理员" aria-hidden="true"></span></a>
+		    <a onclick='confirmDeleteManagerAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+		    <select name="id" class="form-control">
+		    	<option value="0">请选择角色</option>
+		    	<foreach name="roleInfo" item="v">
+		    		<option value="{$v.role_id}">{$v.role_name}</option>
+		    	</foreach>
+		    </select>
+	    	<input type="submit" value="查询" class="btn btn-success">
+		</form>
+    </div>
+	
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<table class="table table-hover">
+	<form method="post" id="form_do" name="form_do">
+		<tr>
+			<th width="3%"><input class="check-all" type="checkbox"></th>
+			<th width="4%">编号</th>
+			<th>帐号</th>
+			<th>管理员名称</th>
+			<th>最后登录时间</th>
+			<th>角色</th>
+			<th>状态</th>
+			<th>操作</th>
+		</tr>
+		<foreach name="info" item="value">
+		<tr>
+			<td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.admin_id}"></td>
+			<td>{$value.admin_id}</td>
+			<td>{$value.admin_account}</td>
+			<td>{$value.admin_name}</td>
+			<td>{$value.last_login_time}</td>
+			<td>{$value.role_name}</td>
+			<if condition="$value.admin_status eq 0 ">
+				<td>开启</td>
+			<else />
+				<td>禁用</td>
+			</if>
+			
+			<td>
+				<a href='__MODULE__/Manager/managerUpdate/id/{$value.admin_id}' class="btn btn-success btn-sm">修改信息</a>
+				<a href='__MODULE__/Manager/managerUpdatePwd/id/{$value.admin_id}' class="btn btn-success btn-sm">修改密码</a>
+				<a onclick='confirmDeleteAdmin({$value.admin_id})' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+       		</td>
+		</tr>
+		</foreach>
+		<tr>
+			<td colspan="19" class="button-center">
+				{$pagelist}
+			</td>
+		</tr>
+	</form>
+	</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

@@ -1,0 +1,17 @@
+{
+    "name": "onlyni",
+    "description": "onlyni",
+    "keywords": ["xiaoni","onlyni","blog"],
+    "homepage": "http://www.onlyni.com/",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "nishihong",
+            "email": "249183418@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "minimum-stability": "dev"
+}

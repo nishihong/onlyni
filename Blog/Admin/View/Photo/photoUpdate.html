@@ -1,0 +1,46 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/photo.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：相册 &gt; <a href="__MODULE__/Photo/photoList">相册列表</a> &gt; 修改相册  &gt;&gt;&gt;
+	</div>
+
+	<div class="form"></div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<form id="photoFormUpdate">
+		<table class="table table-hover">
+			<input type='hidden' name='photo_id' id="photo_id" value='{$info.photo_id}' />
+			<tr>
+				<th>名称:</th>
+				<td><input type="text" name="photo_name" id="photo_name" value="{$info.photo_name}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>原封面图:</th>
+				<td><img src="{$info.photo_pic}" width="80px" height="50px" alt="无"></td>
+				<!-- 删除用 -->
+                <input type="hidden" name="delete_pic" value="{$info.photo_pic}">
+			</tr>
+			<tr>
+				<th>新封面图:</th>
+				<td><font style="font-weight:bold;color:#CC5965">图片宽*高为{PHOTO_WIDTH}*{PHOTO_HEIGHT}！</font><input type="file" name="photo_pic" accept="image/gif,image/jpeg,image/png"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="修改" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+	</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

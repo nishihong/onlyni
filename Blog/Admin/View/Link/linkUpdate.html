@@ -1,0 +1,62 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/link.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：友情链接 &gt; <a href="__MODULE__/Link/link">友情链接</a> &gt; 编辑友情链接  &gt;&gt;&gt;
+	</div>
+
+	<div class="form"></div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<form id="linkFormUpdate">
+		<table class="table table-hover">
+			<input type='hidden' name='link_id' value='{$info.link_id}' />
+			<tr>
+				<th width="7%">名称:</th>
+				<td width="43%">
+					<input class="form-control" type="text" name="link_name" value="{$info.link_name}" />
+				</td>
+				<th width="7%">网址:</th>
+				<td colspan="4">
+					<input class="form-control" type="text" name="link_url" value="{$info.link_url}"/>
+				</td>
+			</tr>
+			<tr>
+				<th width="7%">email:</th>
+				<td width="43%">
+					<input class="form-control" type="text" name="link_email" value="{$info.link_email}"/>
+				</td>
+				<th width="7%">排序:</th>
+				<td width="23%">
+					<input class="form-control" type="text" name="link_rank" value="{$info.link_rank}"/>
+				</td>
+				<th width="5%">显示:</th>
+				<td width="15%">
+					<label><input type="radio" name="if_show" value="0" {$info['if_show']==1 ?'':'checked="checked"'}/>否</label>
+					&nbsp;&nbsp;
+					<label><input type="radio" name="if_show" value="1" {$info['if_show']==1 ?'checked="checked"':''}/>是</label>
+				</td>
+			</tr>
+			<tr>
+				<th>简介:</th>
+				<td colspan="5"><textarea class="form-control" name="link_intro">{$info.link_intro}</textarea></td>
+			</tr>
+			<tr>
+				<td colspan="6" class="button-center">
+					<input type="submit" value="修改" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+	</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

@@ -1,0 +1,92 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/article.js"></script>
+
+<!-- select搜索功能 -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/chosen/chosen.css">
+<script src="__PUBLIC__/admin/chosen/chosen.jquery.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：慢生活 &gt; 慢生活 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+		<form action="__MODULE__/Article/articleQuery" method="get" class="form-inline">
+			<a href="__MODULE__/Article/articleAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加新文章" aria-hidden="true"></span></a>
+		    <a onclick='confirmDeleteArticleAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+			<select name="id" class="form-control chosen-select">
+				<option value="0">请选择栏目</option>
+				<foreach name="programaInfo" item="v">
+					<option value="{$v.programa_id}">{$v.programa_name}</option>
+				</foreach>
+			</select>
+			<input type="submit" value="查询" class="btn btn-success">
+	 	</form>
+	</div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">	
+		<table class="table table-hover">
+		<form id="form_do">
+			<tr>
+				<th><input class="check-all" type="checkbox"></th>
+				<th>编号</th>
+				<th width="25%">标题</th>
+				<th>来源</th>
+				<th>所属栏目</th>
+				<th>封面图</th>
+				<th>点击次数</th>
+				<th>发表时间</th>
+				<th>置顶</th>
+				<th>操作</th>
+			</tr>
+			<foreach name="info" item="value">
+			<tr>
+				<td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.article_id}"></td>
+				<td>{$value.article_id}</td>
+				<td>{$value.article_title}</td>
+				<td>{$value.article_origin}</td>
+				<td>{$value.programa_name}</td>
+				<td><img src="{$value.article_pic}" width="80px" height="50px" alt="无"></td>
+				<td>{$value.article_hit}</td>
+				<td>{$value.article_datetime}</td>
+				<td>
+					<if condition="$value.article_top eq 0 ">
+						否
+					<else />
+						是
+					</if>
+				</td>
+				<td>
+					<a href='__MODULE__/Article/articleUpdate/id/{$value.article_id}' class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a>
+					<a onclick='confirmDeleteArticle({$value.article_id})' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	       		</td>
+			</tr>
+			</foreach>
+			<tr>
+				<td colspan="20" class="button-center">
+					{$pagelist}
+				</td>
+			</tr>
+		</form>
+		</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- select搜索功能 -->
+<script>
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+<include file='Public/righter-foot' />

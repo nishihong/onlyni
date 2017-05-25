@@ -1,0 +1,60 @@
+﻿<include file='Public/header'/>
+
+<link href="__CSS__/about.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+
+<article class="aboutcon">
+<h1 class="t_nav">
+    <span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span>
+    <a href="__ROOT__/index" class="n1">网站首页</a>
+    <a href="#" class="n2">关于我</a>
+</h1>
+<div class="about left">
+  <h2>Just about me</h2>
+    <ul> 
+        <p>
+            {$info.about_content}
+        </p>
+    </ul>
+    <h2>About my blog</h2>
+    <p>域  名：{$info.about_domain_name}</p>
+    <p>服务器：{$info.about_server}</p>
+    <p>备案号：{$info.about_record}</p>
+    <p>程  序：{$info.about_procedure}</p>
+</div>
+<aside class="right">  
+    <div class="about_c">
+        <p>网名：<span>{$info.about_net_name}</span></p>
+        <p>姓名：{$info.about_name}</p>
+        <p>生日：{$info.about_birthday}</p>
+        <p>籍贯：
+            <notempty name="info.about_native_place_province">
+                {$info.about_native_place_province}
+                <notempty name="info.about_native_place_city">
+                    -{$info.about_native_place_city}
+                    <notempty name="info.about_native_place_dist">
+                        -{$info.about_native_place_dist}
+                    </notempty>
+                </notempty>
+            </notempty>
+        </p>
+        <p>现居：
+            <notempty name="info.about_present_address_province">
+                {$info.about_present_address_province}
+                <notempty name="info.about_present_address_city">
+                    -{$info.about_present_address_city}
+                    <notempty name="info.about_present_address_dist">
+                        -{$info.about_present_address_dist}
+                    </notempty>
+                </notempty>
+            </notempty>
+        </p>
+        <p>职业：{$info.about_job}</p>
+        <p>喜欢的书：{$info.about_favorite_book}</p>
+        <p>喜欢的音乐：{$info.about_favorite_music}</p>
+        <p>喜欢的明星：{$info.about_favorite_star}</p>
+    </div>     
+</aside>
+</article>
+
+<include file='Public/footer'/>

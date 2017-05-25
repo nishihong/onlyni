@@ -1,0 +1,99 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/photo.js"></script>
+
+<!-- select搜索功能 -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/chosen/chosen.css">
+<script src="__PUBLIC__/admin/chosen/chosen.jquery.js"></script>
+
+<link rel="stylesheet" type="text/css" href="__UPLOADIFY__/js/uploadify-v3.2/uploadify.css" media="all">
+
+<!-- 浏览器兼容问题 -->
+<!-- <script type="text/javascript" src="__UPLOADIFY__/js/browser.js"></script> -->
+
+<!-- <script type="text/javascript" src="__UPLOADIFY__/js/uploadify-v3.2/jquery-1.7.2.min.js"></script> -->
+<script type="text/javascript" src="__UPLOADIFY__/js/uploadify-v3.2/jquery.uploadify.min.js"></script>
+<style type="text/css">
+body {
+	font: 13px Arial, Helvetica, Sans-serif;
+}
+</style>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：相册 &gt; <a href="__MODULE__/Picture/pictureList">图片</a> &gt; 添加多张图片  &gt;&gt;&gt;
+	</div>
+	
+	<div class="form"></div>
+
+	<h1>Uploadify Demo</h1>
+	<form>
+		相册:			
+		<select id="picture_photo" name="picture_photo" class="form-control chosen-select">
+			<foreach name="photoInfo" item="v">
+				<option value="{$v.photo_id}">{$v.photo_name}</option>
+			</foreach>
+		</select>
+
+		<div id="queue"></div>
+		<input id="file_upload" name="file_upload" type="file" multiple="true">
+		<!-- <a href="javascript:$('#file_upload').uploadify('upload')">上传图片</a> -->
+	</form>
+
+	<script type="text/javascript">
+	
+		// <?php $timestamp = time();?>
+
+		$(function() {
+			$('#file_upload').uploadify({
+				// 'formData'     : {
+				// 	'timestamp' : '<?php echo $timestamp;?>',
+				// 	'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+				// },
+				// 'auto'     : false,
+				// 'buttonClass' : 'some-class',
+				'buttonText' : '点击上传...',
+				'swf'      : '__UPLOADIFY__/js/uploadify-v3.2/uploadify.swf',
+				// 'uploader' : '__UPLOADIFY__/js/uploadify-v3.2/uploadify.php'
+				// 'uploader' : '__MODULE__/Picture/pictureAddMore'
+				'fileTypeExts'	: '*.jpg; *.png; *.gif;',
+				'formData'      : {'picture_photo' : $('#picture_photo').val()},
+				'onUploadStart' : function(file) {
+	        		// $("#file_upload").uploadify("settings", "picture_photo", 2);
+	        		// alert($('#picture_photo').val());
+	        		$('#file_upload').uploadify('settings', 'formData', { 'picture_photo': $('#picture_photo').val()});
+	   			},
+				// 定义在文件上传时需要一同提交的其他数据对象。
+				'uploader' : '{:U("Uploadify/pictureAddMore")}',
+				'onUploadSuccess' : function(file, data, response){
+					//调试语句
+					// console.log(data);
+					// alert(data);
+					// return;
+					// if(result){
+					//     swal({title:"修改成功！", text:"修改头像成功了。", type:"success"},
+					//     function(isClick){
+					//         if (isClick) {
+					//             window.location.assign('/index.php/Admin/Personal/personal');
+					//         }
+					//     });
+					// }else{
+					//     swal("修改失败！","修改头像失败了。","error");
+					// }
+				}
+			});
+		});
+	</script>
+
+<!-- select搜索功能 -->
+<script>
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+<include file='Public/righter-foot' />

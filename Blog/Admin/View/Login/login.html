@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="uu,优优汇联,后台">
+    <meta name="keywords" content="uu,优优汇联,后台">
+    <meta name="robots" content="all"> 
+    <meta name="author" content="nsh"> 
+    <title>系统后台</title>
+    <link rel="shortcut icon" href="__IMG__/ico/hehe.ico"/>
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="__BOOTSTRAP__/bootstrap.css">
+    <!-- <link rel="stylesheet" href="__CSS__/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="__CSS__/login.css">
+</head>
+
+<body>
+    <div class="box">
+
+        <form action="__SELF__" method="post" class="form-inline">
+            <br>
+            <br>
+            <br>
+            <div>
+                <img title="帐号" src="__IMG__/login/admin.png">
+                <input class="form-control" type="text" name="admin_account" placeholder="帐号" required="required"  pattern="^\w{5,18}$" style="width:200px"/>
+            </div>
+            <div>
+                <img title="密码" src="__IMG__/login/pwd.png">
+                <input class="form-control" type="password" name="admin_pwd" placeholder="密码" required="required" pattern="^\w{5,18}$" style="width:200px"/>
+            </div>
+
+            <!-- 验证码是否显示 -->
+            <!-- 给控制器看要不要验证码 -->
+            <input type="hidden" name="config_save_code" value="{$saveCode}">
+            <if condition="$saveCode eq 0 ">
+                <div>
+                    <img title="验证码" src="__IMG__/login/code.png">
+                    <input class="form-control" type="text" name="checkCode" maxLength="4" placeholder="验证码" required="required" style="width:70px">
+                    <img title="点击切换验证码" src="__CONTROLLER__/verifyImg" onclick="this.src='__CONTROLLER__/verifyImg?a='+Math.random()">
+                </div>
+            </if>
+
+            <br>
+            <div>
+                <input class="btn btn-success btn-lg btn-block" type="submit" value="登录" />
+            </div>
+            <div>
+                <font color="red" size="5">
+                    <empty name="error">
+                    <else />    
+                        {$error}
+                    </empty> 
+                </font>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

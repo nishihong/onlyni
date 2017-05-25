@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="小倪个人博客后台">
+    <meta name="keywords" content="小倪,个人博客,倪时鸿">
+    <meta name="robots" content="all"> 
+    <meta name="author" content="倪时鸿"> 
+    <title>小倪博客后台</title>
+    <!-- ico图标 -->
+    <link rel="shortcut icon" href="__IMG__/ico/hehe.ico">
+
+    <link rel="stylesheet" href="__BOOTSTRAP__/bootstrap.css">
+
+    <link href="__BOOTSTRAP__/style.css" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" href="__CSS__/righter.css">
+    <link rel="stylesheet" href="__CSS__/form.css">
+    <link rel="stylesheet" href="__CSS__/content.css">
+
+    <link rel="stylesheet" href="__CSS__/button.css">
+    
+    <!-- bootstrap 修改的css -->
+    <link rel="stylesheet" href="__BOOTSTRAP__/bootstrap-update.css"> 
+
+    <!-- Sweet Alert -->
+    <link href="__SWEETALERT__/sweetalert.css" rel="stylesheet">
+    
+    <script src="__JS__/jquery-2.1.1.min.js"></script>
+    <script src="__JS__/ajax.js"></script>
+
+</head>
+
+<body>	
+
+	<div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">  
+                            <span>
+                                <img alt="image" class="img-circle" src="__ROOT__/Upload/avatar/avatar_60.jpg" />
+                            </span>         
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{$Think.session.adminName}</strong>
+                             </span> <span class="text-muted text-xs block">{$Think.session.adminRoleName} <b class="caret"></b></span> </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="__MODULE__/Personal/personal">个人资料</a></li>
+                                <!-- <li><a href="__MODULE__/Config/clearCache">清除缓存</a></li> -->
+                                <li><a onclick="clearCache()">清除缓存</a></li>
+                                <!-- <li><a href="__MODULE__/Login/logout">安全退出</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            博客
+                        </div>
+                    </li>
+
+                    <foreach name="pauth_info" item="v">
+                    <li class="{$v.auth_c}">
+                        <a href="javascript:void(0)"><i class="glyphicon {$v.auth_ico}"></i><span class="nav-label">{$v.auth_name}</span></a>
+                        <ul class="nav nav-second-level">
+                            <foreach name="sauth_info" item="vv">
+                            <if condition="$v.auth_id eq $vv.auth_pid ">
+                                <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}">{$vv.auth_name}</a></li>
+                            </if>
+                            </foreach>
+                        </ul>
+                    </li>
+                    </foreach>
+                </ul>
+            </div>
+        </nav>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>小倪许愿墙</title>
+	<meta name="keywords" content="倪时鸿,小倪,个人博客,小倪个人博客"/>
+  	<meta name="description" content="小倪个人博客,互相学习交流的个人原创网站。" />
+  	<meta name="author" content="倪时鸿"> 
+  	<!-- ico图标 -->
+ 	<link rel="shortcut icon" href="__IMG__/hehe.ico">
+	<link rel="stylesheet" type="text/css" href="__CSS__/wish/fancybox.css" />
+    <link rel="stylesheet" href="__CSS__/wish/index.css" />
+
+	<script type="text/javascript" src="__JS__/wish/jquery.js"></script> 
+    <script type='text/javascript' src='__JS__/wish/jquery-ui.min.js'></script>
+    <script type="text/javascript" src="__JS__/wish/jquery.fancybox-1.3.1.pack.js"></script>
+    <script type="text/javascript" src="__JS__/wish/global.js"></script>
+
+    <!-- 表情包 -->
+    <script type="text/javascript" src="__JS__/wish/smilies/smilies.js"></script>
+    <script type="text/javascript" src="__JS__/wish/smilies/smilies_data.js"></script>
+    <script type="text/javascript" src="__JS__/wish/jquery.caretInsert.js"></script> <!-- 光标 -->
+</head>
+<body>
+	<div class="add">
+        <a href="add_note.html" id="fancy" class="add_note"></a>
+    </div>
+    <div class="container" style="position: relative">
+        <foreach name="info" item="v">
+          <?php list($left, $top, $zindex) = explode('|',  $v['wish_xyz']);?>
+          <dl class='paper a{$v.wish_color}'  style='left:{$left}px;top:{$top}px;z-index:{$zindex}' data-id="{$v.wish_id}">
+		    <dt>
+			    <span class='username'>{$v.wish_name}</span>
+			    <span class='num'>No.{$v.wish_id}</span>
+		    </dt>
+		    <dd class='content'>{$v.wish_content|parsesmiles}</dd>
+		    <dd class='bottom'>
+			    <span class='time'>{$v.wish_addtime|tranTime}</span>
+          <if condition="$v.is_lock eq 0 ">
+          <a class='lock' href='javascript:void(0);'></a>
+          </if>
+			    <a class='close' href='javascript:void(0);'></a>
+		    </dd>
+	    </dl>
+        </foreach>
+    </div>
+</body>
+</html>

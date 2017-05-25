@@ -1,0 +1,17 @@
+﻿/*@charset "utf-8";*/
+/*.aboutcon{ color:#696969;background: url(../img/aboutphoto.jpg) no-repeat right 360px;}*/
+h1.t_nav { border-bottom: #F1F1F1 1px solid; font-size: 12px; font-weight: normal; line-height: 40px; height: 40px; }
+h1.t_nav a{width: 100px; display: block; text-align: center ; color: #fff; float:left}
+h1.t_nav span{float:right; color:#999}
+.n1 { background: #5EA51B; }
+.n2{ background: #8BBF5D; }
+
+.template { background: #F1F0EE }
+.template h3 { border-bottom: #FFF 1px solid; width: 100%; overflow: hidden; font-size: 14px; margin: 0 0 10px; font-family: "微软雅黑"; display: block; clear: both; }
+.template h3 p { background: #474645; width: 180px; height: 30px; margin: 15px 0 0 10px; line-height: 30px; color: #fff; text-align: center; box-shadow: #999 4px 5px 1px; }
+.template h3 p span { color: #38b3d4; }
+.template ul { overflow: hidden; }
+.template ul li { margin: 3px; float: left; display: block; padding: 5px 5px 6px 5px; -webkit-transition: all 1s; -moz-transition: all 1s; -o-transition: all 1s; transition: all 1s; }
+.template li img { width: 225px; height: 160px; background: #FFF; padding: 4px; box-shadow: 0px 0px 2px rgba(0,0,0,.5); display: block; }
+.template li span { color: #F1F0EE; display: block; text-align: center; margin-top: 5px; width: 200px; overflow: hidden; text-overflow: ellipsis; height: 14px }
+.template li:hover { background: #666; padding: 5px 5px 6px 5px; }

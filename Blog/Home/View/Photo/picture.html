@@ -1,0 +1,43 @@
+<include file='Public/header'/>
+
+<link href="__CSS__/picture.css" rel="stylesheet">
+<link href="__CSS__/jquery.fancybox.css" rel="stylesheet">
+
+<article class="aboutcon">
+    <h1 class="t_nav">
+    <span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span>
+    <a href="__ROOT__/index" class="n1">网站首页</a>
+    <a href="__ROOT__/photo" class="n2">相册</a>
+    <a href="#" class="n3">{$status}</a></h1>
+    <div class="template">
+        <div class="box">
+            <h3>
+              <p>{$status}</p>
+            </h3>
+            <ul>
+                <foreach name="pictureInfo" item="v">
+                    <li>
+                        <a rel="group" class="fancybox" href="{$v.picture_pic}" title="{$v.picture_name}">
+                          <img alt="image" src="{$v.picture_pic}" width="200px" />
+                        </a>
+                    </li>
+                </foreach>
+            </ul>                   
+        </div>
+    </div>
+</article>
+
+<script src="__JS__/jquery-2.1.1.min.js"></script>
+<script src="__JS__/jquery.fancybox.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.fancybox').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
+    });
+</script>
+
+<include file='Public/footer'/>
+
+

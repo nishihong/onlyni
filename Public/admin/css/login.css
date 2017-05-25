@@ -1,0 +1,26 @@
+body{
+	margin:0;
+	padding:0;
+	
+	/*height:100%;*/
+	
+	/*background-color: #F3F3F4;*/
+	background: url(../img/login/background.png) 0 0 no-repeat;
+	background-size: cover;
+
+	/*width:800px;*/
+	/*height: 500px;*/
+	/*max-width: 700px;*/
+}
+.box{
+	position:absolute;
+	top:50%;
+	left:50%;
+	/*上右下左*/
+	margin:-150px 0 0 -150px;
+	/*此时宽和高都要固定*/
+	width:250px;
+	height:300px;
+	text-align: center;
+	/*border:1px solid #008800;*/
+}

@@ -1,0 +1,70 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/guestbook.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：留言板 &gt; 留言板 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+	    <a onclick='confirmDeleteGuestbookAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	</div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">	
+		<table class="table table-hover">
+		<form id="form_do">
+			<tr>
+				<th><input class="check-all" type="checkbox"></th>
+				<th>编号</th>
+				<th>昵称</th>
+				<th width="25%">内容</th>
+				<th>邮箱</th>
+				<th>主页</th>
+				<th>ip地址</th>
+				<th>发表端</th>
+				<th>发表时间</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+			<foreach name="info" item="value">
+			<tr>
+				<td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.guestbook_id}"></td>
+				<td>{$value.guestbook_id}</td>
+				<td>{$value.guestbook_name}</td>
+				<td>{$value.guestbook_content}</td>
+				<td>{$value.guestbook_email}</td>
+				<td>{$value.guestbook_url}</td>
+				<td>{$value.guestbook_ip}</td>
+				<td>{$value.guestbook_from}</td>
+				<td>{$value.guestbook_datetime|tranTime}</td>
+				<td>
+					<if condition="$value.reply_datetime eq 0 ">
+						<span title="未回复" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					<else />
+						<span title="已回复" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					</if>
+				</td>
+				<td>
+					<a href='__MODULE__/Guestbook/guestbookReply/id/{$value.guestbook_id}' class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit" title="回复" aria-hidden="true"></span></a>
+					<a onclick='confirmDeleteGuestbook({$value.guestbook_id})' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	       		</td>
+			</tr>
+			</foreach>
+			<tr>
+				<td colspan="20" class="button-center">
+					{$pagelist}
+				</td>
+			</tr>
+		</form>
+		</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

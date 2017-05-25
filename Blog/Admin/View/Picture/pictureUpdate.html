@@ -1,0 +1,74 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/photo.js"></script>
+
+<!-- select搜索功能 -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/chosen/chosen.css">
+<script src="__PUBLIC__/admin/chosen/chosen.jquery.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：相册 &gt; <a href="__MODULE__/Picture/pictureList">图片</a> &gt; 修改图片  &gt;&gt;&gt;
+	</div>
+
+	<div class="form"></div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<form id="pictureFormUpdate">
+		<table class="table table-hover">
+			<input type='hidden' name='picture_id' value='{$info.picture_id}' />
+			<tr>
+				<th>名称:</th>
+				<td><input type="text" name="picture_name" value="{$info.picture_name}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>相册:</th>
+				<td>
+					<select name="picture_photo" class="form-control chosen-select">
+						<foreach name="photoInfo" item="v">
+							<if condition="$info.picture_photo eq $v.photo_id ">
+                       			<option value="{$v.photo_id}" selected="selected">{$v.photo_name}</option>
+                            <else />
+                            	<option value="{$v.photo_id}">{$v.photo_name}</option>
+                        	</if>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>原图片:</th>
+				<td><img src="{$info.picture_pic}" width="80px" height="50px" alt="无"></td>
+				<!-- 删除用 -->
+                <input type="hidden" name="delete_pic" value="{$info.picture_pic}">
+			</tr>
+			<tr>
+				<th>新图片:</th>
+				<td><font style="font-weight:bold;color:#CC5965">图片宽*高为{PICTURE_WIDTH}*{PICTURE_HEIGHT}！</font><input type="file" name="picture_pic" accept="image/gif,image/jpeg,image/png"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="修改" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+	</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- select搜索功能 -->
+<script>
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+<include file='Public/righter-foot' />

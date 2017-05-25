@@ -1,0 +1,53 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; <a href="__MODULE__/Auth/authList">权限管理</a> &gt; 权限修改 &gt;&gt;&gt;
+	</div><br/>
+
+	<div class="wrapper white-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+	<form id="authFormUpdate">
+		<table class="table table-hover">
+			<tr>
+				<th>编号:</th>
+				<td><input type="text" readonly="readonly" name="auth_id" value="{$info['auth_id']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>权限名称:</th>
+				<td><input type="text" name="auth_name" value="{$info['auth_name']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>权限控制器:</th>
+				<td><input type="text" name="auth_c" value="{$info['auth_c']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>权限操作方法:</th>
+				<td><input type="text" name="auth_a" value="{$info['auth_a']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>图标:</th>
+				<td><input type="text" name="auth_ico" value="{$info['auth_ico']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>排序号:</th>
+				<td><input type="text" name="auth_rank" value="{$info['auth_rank']}" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="修改" class="btn btn-info btn-lg">
+				</td>
+			</tr>
+		</table>
+	</form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+<include file='Public/righter-foot' />

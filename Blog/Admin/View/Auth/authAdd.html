@@ -1,0 +1,87 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+<!-- select搜索功能 -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/chosen/chosen.css">
+<script src="__PUBLIC__/admin/chosen/chosen.jquery.js"></script>
+
+    <div class="right-top">
+        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; <a href="__MODULE__/Auth/authList">权限管理</a> &gt; 权限添加 &gt;&gt;&gt;
+    </div>
+
+    <div class="form"></div>
+
+    <!-- 权限添加界面 -->
+    <div class="wrapper white-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+    <form id="authFormAdd">
+        <table class="table table-hover">
+            <tr>
+                <th>权限名称:</th>
+                <td>
+                    <input type="text" name="auth_name" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>权限父级:</th>
+                <td>             
+                    <select name="auth_pid"  class="form-control chosen-select">
+                        <option value="0">请选择</option>
+                        <foreach name="authInfo" item="value">
+                            <option value="{$value.auth_id}">{$value.auth_name}</option>
+                        </foreach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>权限控制器:</th>
+                <td>
+                    <input type="text" name="auth_c" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>权限操作方法:</th>
+                <td>
+                    <input type="text" name="auth_a" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>图标:</th>
+                <td>
+                    <input type="text" name="auth_ico" class="form-control">
+                </td>
+            </tr>  
+            <tr>
+                <th>排序号:</th>
+                <td>
+                    <input type="text" name="auth_rank" class="form-control">
+                </td>
+            </tr>  
+            <tr>
+                <td colspan="2" class="button-center">
+                    <input type="submit" value="添加" class="btn btn-primary btn-lg" />
+                </td>
+            </tr>
+        </table>
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- select搜索功能 -->
+<script>
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+<include file='Public/righter-foot' />

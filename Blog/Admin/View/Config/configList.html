@@ -1,0 +1,46 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; 配置管理 &gt;&gt;&gt;
+	</div>
+
+	<div class="form"></div>
+	
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<table class="table table-hover">
+		<form id="configFormUpdate">
+			<input type="hidden" name="config_id" value="{$info.config_id}" />
+			<tr>
+				<th>登录验证码:</th>
+				<td>
+					<select name="config_save_code" class="form-control">
+						<if condition="$info.config_save_code eq 0 ">
+							<option value="0" selected="selected">开启</option>
+							<option value="1">关闭</option>
+						<else />
+							<option value="0">开启</option>
+							<option value="1" selected="selected">关闭</option>
+						</if>
+					</select>
+				</td>
+			</tr>
+			<tr>	
+				<td colspan="2" class="button-center">
+					<input type="submit" value="修改" class="btn btn-info btn-lg"/>
+				</td>
+			</tr>
+		</form>	
+	</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

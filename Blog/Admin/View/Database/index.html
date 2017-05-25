@@ -1,0 +1,35 @@
+<include file="Public/lefter" />
+
+<include file="Public/righter-head" />
+
+<script src="__NAV__/database.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：数据库管理 &gt; 数据库列表 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+		<br>
+	</div>
+
+	<div class="wrapper gray-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+		<p>
+			<a href="{:U('Database/index',array('type'=>'export'))}"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp;数据库备份</a>
+		</p>
+		<p>可自行数据库备份</p>
+
+		<br>
+
+		<p>
+			<a href="{:U('Database/index',array('type'=>'import'))}"><i class="glyphicon glyphicon-floppy-open"></i>&nbsp;数据库还原</a>
+		</p>
+		<p>可自行数据库还原，一键还原标准数据</p>
+				</div>
+            </div>
+        </div>
+    </div>
+    
+<include file="Public/righter-foot" />

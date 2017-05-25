@@ -1,0 +1,118 @@
+﻿<include file='Public/header'/>
+
+<link href="__CSS__/new.css" rel="stylesheet">
+
+<article class="blogs">
+  <h1 class="t_nav">
+    <span>
+      您当前的位置：
+      <a href="__ROOT__/index">首页</a>&nbsp;&gt;&nbsp;
+      <a href="__ROOT__/article">慢生活</a>&nbsp;&gt;&nbsp;
+      <a href="__ROOT__/articleQuery-{$articleInfo.article_programa}">{$articleInfo.programa_name}</a>
+    </span>
+    <a href="__ROOT__" class="n1">网站首页</a>
+    <a href="#" class="n2">{$articleInfo.programa_name}</a>
+  </h1>
+  <div class="index_about">
+    <h2 class="c_titile">{$articleInfo.article_title}</h2>
+    <p class="box_c">
+      <span class="d_time">发布时间：{$articleInfo.article_datetime}</span>
+      <span>来源：{$articleInfo.article_origin}</span>
+      <span>阅读：({$articleInfo.article_hit})</span>
+    </p>
+    <ul class="infos">
+      <p>
+        {$articleInfo.article_content}
+      </p>
+    </ul>
+    <div class="page">
+      <notempty name="pagelist">
+        {$pagelist}
+      </notempty>
+    </div>
+    <!-- <div class="keybq">
+      <p><span>关键字词</span>：爱情,犯错,原谅,分手</p>
+    </div> -->
+    <div class="nextinfo">
+      <p>上一篇：
+        <empty name="before">
+            已经是第一条
+        <else />
+            <a href="__ROOT__/articleDetails-{$before.article_id}" title="{$before.article_title}">{$before.article_title}</a>
+        </empty>
+      </p>
+      <p>下一篇：
+        <empty name="after">
+            已经是最后一条
+        <else />
+            <a href="__ROOT__/articleDetails-{$after.article_id}" title="{$after.article_title}">{$after.article_title}</a>
+        </empty>
+      </p>
+    </div>
+    <div class="otherlink">
+      <h2>相关文章</h2>
+      <ul>
+      <foreach name="newAboutArticleInfo" item="v">
+        <li><a href="__ROOT__/articleDetails-{$v.article_id}" title="{$v.article_title}">{$v.article_title}</a></li>
+      </foreach>
+      </ul>
+    </div>
+    
+    <!-- 多说评论框 start -->
+    <!-- <div class="ds-thread" data-thread-key="{$articleInfo.article_id}" data-title="{$articleInfo.article_title}" data-url="www.fuckni.com__MODULE__/Article/articleDetails/id/{$articleInfo.article_id}"></div> -->
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    // var duoshuoQuery = {short_name:"fuckni"};
+    //   (function() {
+    //     var ds = document.createElement('script');
+    //     ds.type = 'text/javascript';ds.async = true;
+    //     ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    //     ds.charset = 'UTF-8';
+    //     (document.getElementsByTagName('head')[0] 
+    //      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    //   })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+
+  </div>
+  <aside class="right">
+    <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a class="shareCount"></a></div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script> 
+    <script type="text/javascript" id="bdshell_js"></script> 
+    <script type="text/javascript">
+      document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+    </script> 
+    <!-- Baidu Button END -->
+
+    <div class="blank"></div>
+    <div class="news">
+      <h3>
+        <p>栏目<span>最新</span></p>
+      </h3>
+      <ul class="rank">
+        <foreach name="newArticleInfo" item="v">
+          <li><a href="__ROOT__/articleDetails-{$v.article_id}" title="{$v.article_title}">{$v.article_title}</a></li>
+        </foreach>
+      </ul>
+      <h3 class="ph">
+        <p>点击<span>排行</span></p>
+      </h3>
+      <ul class="paih">
+        <foreach name="hitArticleInfo" item="v">
+          <li><a href="__ROOT__/articleDetails-{$v.article_id}" title="{$v.article_title}">{$v.article_title}</a></li>
+        </foreach>
+      </ul>
+    </div>
+    <!-- <div class="visitors">
+      <h3>
+        <p>最近访客</p>
+      </h3>
+      <ul>
+      </ul>
+    </div> -->
+  </aside>
+</article>
+
+<include file='Public/footer'/>

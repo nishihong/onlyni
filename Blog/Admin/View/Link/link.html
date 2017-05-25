@@ -1,0 +1,67 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/link.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：友情链接 &gt; 友情链接 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+		<a href="__MODULE__/Link/linkAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加新友链" aria-hidden="true"></span></a>
+	    <a onclick='confirmDeleteLinkAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	</div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">	
+		<table class="table table-hover">
+		<form id="form_do">
+			<tr>
+				<th><input class="check-all" type="checkbox"></th>
+				<th>编号</th>
+				<th>名称</th>
+				<th>网址</th>
+				<th>email</th>
+				<th width="20%">简介</th>
+				<th>显示</th>
+				<th>排序</th>
+				<th>操作</th>
+			</tr>
+			<foreach name="info" item="value">
+			<tr>
+				<td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.link_id}"></td>
+				<td>{$value.link_id}</td>
+				<td>{$value.link_name}</td>
+				<td>{$value.link_url}</td>
+				<td>{$value.link_email}</td>
+				<td>{$value.link_intro}</td>
+				<td>
+					<if condition="$value.if_show eq 0 ">
+						否
+					<else />
+						是
+					</if>
+				</td>
+				<td>{$value.link_rank}</td>
+				<td>
+					<a href='__MODULE__/Link/linkUpdate/id/{$value.link_id}' class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a>
+					<a onclick='confirmDeleteLink({$value.link_id})' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+	       		</td>
+			</tr>
+			</foreach>
+			<tr>
+				<td colspan="20" class="button-center">
+					{$pagelist}
+				</td>
+			</tr>
+		</form>
+		</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />

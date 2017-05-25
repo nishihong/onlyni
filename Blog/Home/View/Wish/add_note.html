@@ -1,0 +1,33 @@
+<div id='send-form'>
+    <p class='title'><span>许下你的愿望</span><a  id='box_close'></a></p>
+    <form action="" name='wish'>
+        <div class="per">
+            <label for="username">昵称：</label>
+            <input type="text" name='username' id='username'/>
+        </div>
+        <div class="per">
+            <label for="content_msg">愿望：(您还可以输入&nbsp;<span id='font-num'>50</span>&nbsp;个字)</label>
+            <textarea name="content" id='content_msg' nc_type="contenttxt"></textarea>
+        </div>
+        <div class="per">
+            <label>背景色：</label>
+            <ul id="color">
+                <li style="background-color:#FFDFFF" class="current" data-color-id="1"></li>
+                <li style="background-color:#C6FFC4" data-color-id="2"></li>
+                <li style="background-color:#FFE3B8" data-color-id="3"></li>
+                <li style="background-color:#CEECFF" data-color-id="4"></li>
+                <li style="background-color:#E8DEFF" data-color-id="5"></li>
+            </ul>
+        </div>
+
+        <!-- 表情弹出层 -->
+        <div id='smilies_div' class="smilies-module"></div>
+
+        <div class="per">
+            <label>表情：</label>
+            <a class="face" href="javascript:void(0);" data-param="{'txtid':'msg'}" nc_type="smiliesbtn"><img src="__IMG__/wish/1.gif"></a>
+        </div>
+
+        <span id='addbtn'></span>
+    </form>
+</div>

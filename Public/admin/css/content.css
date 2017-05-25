@@ -1,0 +1,24 @@
+/*dl框*/
+.dbox{
+	background-color:#EDFBFF; 
+	border-top:3px solid #B8C8D2;
+	width: 98%;
+	margin-left: 8px;
+	margin-top: 8px;
+}
+/*dt属性*/
+.dbox dt {
+	height: 28px;
+	padding-left: 5px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #4D6C2F;
+	/*cursor属性规定要显示的光标的类型（形状）*/
+	/*cursor: pointer;*/
+}
+/*dd属性*/
+.dbox dd{
+	padding: 7px; 
+	line-height: 160%; 
+	margin-top:-10px;
+}

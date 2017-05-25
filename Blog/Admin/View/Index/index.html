@@ -1,0 +1,40 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：后台管理界面 &gt;&gt;&gt;
+	</div>
+
+	<dl class="dbox">
+	    <dt>我的个人信息</dt>
+	    <dd>
+			您好，{$personal.admin_name}<br/>
+			角色：{$personal.role_name}<br/>
+			上次登录时间：{$Think.session.lastLoginTime}<br/>
+	    </dd>
+	</dl>
+
+	<dl class="dbox">
+	    <dt>站点统计</dt>
+	    <dd>
+			管理员：{$admin.count} <br>
+			文章：{$article.count} <br>
+			文章栏目：{$programa.count} <br>
+			说说：{$talk.count} <br>
+			留言：{$guestbook.count} <br>
+			相册：{$photo.count} <br>
+			相片：{$picture.count} <br>
+	    </dd>
+	</dl>
+	<dl class="dbox">
+	    <dt>系统信息</dt>
+	    <dd>
+			程序版本：小倪博客1.0<br />
+			操作系统：<?php echo PHP_OS; ?><br />
+			php版本：<?php echo "PHP".PHP_VERSION; ?><br />
+			服务器时间：<?php echo $showtime=date("Y-m-d H:i:s");?><br />
+	    </dd>
+	</dl>	
+
+<include file='Public/righter-foot' />

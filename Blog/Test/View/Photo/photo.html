@@ -1,0 +1,29 @@
+<include file='Public/header'/>
+
+<link href="__CSS__/photo.css" rel="stylesheet">
+
+<article class="aboutcon">
+    <h1 class="t_nav">
+    <span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span>
+    <a href="__ROOT__/index" class="n1">网站首页</a>
+    <a href="#" class="n2">相册</a></h1>
+    <div class="template">
+        <div class="box">
+            <h3>
+              <p><span>个人图册</span> Photo</p>
+            </h3>
+            <ul>
+              <foreach name="photoInfo" item="v">
+                <li>
+                    <a href="__ROOT__/photo-{$v.photo_id}"><img src="{$v.photo_pic}"></a>
+                    <span>{$v.photo_name}</span>
+                </li>
+              </foreach>
+            </ul>
+        </div>
+    </div>
+</article>
+
+<include file='Public/footer'/>
+
+

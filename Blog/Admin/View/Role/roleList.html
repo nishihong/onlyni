@@ -1,0 +1,47 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/system.js"></script>
+
+    <div class="right-top">
+        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：系统设置 &gt; 角色管理 &gt;&gt;&gt;
+    </div>
+
+    <div class="form">
+        <a href="__MODULE__/Role/roleAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"  title="添加新角色" aria-hidden="true"></span></a>
+        <a onclick='confirmDeleteRoleAll()' class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="wrapper white-bg">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+    <table  class="table table-hover">
+    <form method="post" id="form_do" name="form_do">
+        <tr>
+            <th><input class="check-all" type="checkbox"></th>
+            <th>序号</th>
+            <th>角色名称</th>
+            <th>操作</th>
+        </tr>
+        <foreach name="info" item="value">
+        <tr>
+            <td><input class="ids" name="ID_Delete[]" type="checkbox" value="{$value.role_id}"></td>
+            <td>{$value.role_id}</td>
+            <td>{$value.role_name}</td>
+            <td>
+                <a href="__MODULE__/Role/authDistribute/id/{$value.role_id}" class="btn btn-success btn-sm">权限分配</a>
+                <a href='__MODULE__/Role/roleUpdate/id/{$value.role_id}' class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit" title="编辑" aria-hidden="true"></span></a>
+                <a onclick="confirmDeleteRole({$value.role_id})" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" title="删除" aria-hidden="true"></span></a>
+            </td>
+        </tr>
+        </foreach>
+    </form>
+    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<include file='Public/righter-foot' />

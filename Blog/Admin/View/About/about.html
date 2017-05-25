@@ -1,0 +1,165 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/about.js"></script>
+
+ 
+<!-- 日期选择laydate -->
+<script src="__LAYDATE__/laydate.js"></script>
+
+<!-- 省市区三级联动 -->
+<script src="__PROVINCE__/jquery.cityselect.js"></script>
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="__UEDITOR__/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__UEDITOR__/ueditor.all.min.js">
+</script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+var ue=UE.getEditor('container');
+</script>
+
+<!-- laydate和bootstrap兼容问题 -->
+<style type="text/css">
+.laydate_box, .laydate_box * {  
+      box-sizing:content-box;  
+} 
+</style>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：关于我 &gt; 关于我 &gt;&gt;&gt;
+	</div>
+
+	<div class="form">
+	</div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+		<form id="aboutFormUpdate">
+			<table class="table table-hover">
+				<input type="hidden" name="about_id" value="{$info.about_id}">
+				<tr>
+					<th>网名:</th>
+					<td>
+						<input type="text" name="about_net_name" value="{$info.about_net_name}" class="form-control">
+					</td>
+					<th>姓名:</th>
+					<td>
+						<input type="text" name="about_name" value="{$info.about_name}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>籍贯:</th>
+					<td>
+						<div class="form-control" id="native_place">
+							<select class="prov" name="about_native_place_province" value="{$info.about_native_place_province}"></select> 
+	                    	<select class="city" name="about_native_place_city" value="{$info.about_native_place_city}" disabled="disabled"></select>
+	                    	<select class="dist" name="about_native_place_dist" value="{$info.about_native_place_dist}" disabled="disabled"></select>
+                    	</div>
+                    	<!-- 下面取id值用 -->
+                    	<input type="hidden" id="about_native_place_province" value="{$info.about_native_place_province}">
+                    	<input type="hidden" id="about_native_place_city" value="{$info.about_native_place_city}">
+                    	<input type="hidden" id="about_native_place_dist" value="{$info.about_native_place_dist}">
+					</td>
+					<th>现居:</th>
+					<td>
+						<div class="form-control" id="present_address">
+							<select class="prov" name="about_present_address_province" value="{$info.about_present_address_province}"></select> 
+	                    	<select class="city" name="about_present_address_city" value="{$info.about_present_address_city}" disabled="disabled"></select>
+	                    	<select class="dist" name="about_present_address_dist" value="{$info.about_present_address_dist}" disabled="disabled"></select>
+                    	</div>
+                    	<!-- 下面取id值用 -->
+                    	<input type="hidden" id="about_present_address_province" value="{$info.about_present_address_province}">
+                    	<input type="hidden" id="about_present_address_city" value="{$info.about_present_address_city}">
+                    	<input type="hidden" id="about_present_address_dist" value="{$info.about_present_address_dist}">
+					</td>
+				</tr>
+				<tr>
+					<th>生日:</th>
+					<td>
+						<input placeholder="请输入日期" name="about_birthday" value="{$info.about_birthday}" class="form-control layer-date" onclick="laydate()">
+					</td>
+					<th>职业:</th>
+					<td>
+						<input type="text" name="about_job" value="{$info.about_job}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>喜欢的书:</th>
+					<td>
+						<input type="text" name="about_favorite_book" value="{$info.about_favorite_book}" class="form-control">
+					</td>
+					<th>喜欢的音乐:</th>
+					<td>
+						<input type="text" name="about_favorite_music" value="{$info.about_favorite_music}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>喜欢的明星:</th>
+					<td>
+						<input type="text" name="about_favorite_star" value="{$info.about_favorite_star}" class="form-control">
+					</td>
+					<th>域名信息:</th>
+					<td>
+						<input type="text" name="about_domain_name" value="{$info.about_domain_name}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th width="7%">服务器:</th>
+					<td width="43%">
+						<input type="text" name="about_server" value="{$info.about_server}" class="form-control">
+					</td>
+					<th width="7%">备案号:</th>
+					<td width="43%">
+						<input type="text" name="about_record" value="{$info.about_record}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>程序:</th>
+					<td colspan="3">
+						<input type="text" name="about_procedure" value="{$info.about_procedure}" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>人生历程:</th>
+					<td colspan="3" style="width:93%">
+						<!-- 加载编辑器的容器 -->
+						<script type="text/plain" id="container" name="about_content">{$info.about_content}</script>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="button-center">
+						<input type="submit" value="修改" class="btn btn-info btn-lg">
+					</td>
+				</tr>
+			</table>
+		</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+    $(function() {
+    	// alert($("#about_native_place_province").val());
+    	// return;
+        $("#native_place").citySelect({
+            prov: $("#about_native_place_province").val(),
+            city: $("#about_native_place_city").val(),
+            dist: $("#about_native_place_dist").val(),
+            nodata: "none"
+        });
+        $("#present_address").citySelect({
+            prov: $("#about_present_address_province").val(),
+            city: $("#about_present_address_city").val(),
+            dist: $("#about_present_address_dist").val(),
+            nodata: "none"
+        });
+    });
+</script>
+
+<include file='Public/righter-foot' />

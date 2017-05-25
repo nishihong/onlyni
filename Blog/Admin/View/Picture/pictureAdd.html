@@ -1,0 +1,57 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/photo.js"></script>
+
+<!-- select搜索功能 -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/chosen/chosen.css">
+<script src="__PUBLIC__/admin/chosen/chosen.jquery.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：相册 &gt; <a href="__MODULE__/Picture/pictureList">图片</a> &gt; 添加图片  &gt;&gt;&gt;
+	</div>
+	
+	<div class="form"></div>
+
+	<div class="table">
+		<form id="pictureFormAdd">
+		<table class="table table-hover">
+			<tr>
+				<th>名称:</th>
+				<td><input class="form-control" type="text" name="picture_name"></td>
+			</tr>
+			<tr>
+				<th>相册:</th>
+				<td>
+					<select name="picture_photo" class="form-control chosen-select">
+						<foreach name="photoInfo" item="v">
+							<option value="{$v.photo_id}">{$v.photo_name}</option>
+						</foreach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>图片:</th>
+				<td><font style="font-weight:bold;color:#CC5965">图片宽*高为{PICTURE_WIDTH}*{PICTURE_HEIGHT}！</font><input type="file" name="picture_pic" accept="image/gif,image/jpeg,image/png"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="添加" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+
+<!-- select搜索功能 -->
+<script>
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+<include file='Public/righter-foot' />

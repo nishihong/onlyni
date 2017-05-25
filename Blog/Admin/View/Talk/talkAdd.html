@@ -1,0 +1,49 @@
+<include file='Public/lefter'/>
+
+<include file='Public/righter-head'/>
+
+<script src="__NAV__/talk.js"></script>
+
+	<div class="right-top">
+		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>当前位置：碎言碎语 &gt; <a href="__MODULE__/Talk/talk">碎言碎语</a> &gt; 添加碎言碎语  &gt;&gt;&gt;
+	</div>
+	
+	<div class="form"></div>
+
+	<div class="wrapper white-bg">
+		<div class="row">
+		    <div class="col-lg-12">
+				<div class="table-responsive">
+	<div class="table">
+		<form id="talkFormAdd">
+		<table class="table table-hover">
+			<tr>
+				<th>置顶:</th>
+				<td>
+					<label><input type="radio" name="talk_top" value="0" checked="checked" />否</label>
+					&nbsp;&nbsp;
+					<label><input type="radio" name="talk_top" value="1" />是</label>
+				</td>
+			</tr>
+			<tr>
+				<th>图片:</th>
+				<td><font style="font-weight:bold;color:#CC5965">图片宽*高为{TALK_WIDTH}*{TALK_HEIGHT}！</font><input type="file" name="talk_pic" accept="image/gif,image/jpeg,image/png"></td>
+			</tr>
+			<tr>
+				<th>内容:</th>
+				<td><textarea class="form-control" name="talk_content"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button-center">
+					<input type="submit" value="添加" class="btn btn-primary btn-lg">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file='Public/righter-foot' />
